@@ -1,9 +1,10 @@
-@app.route("/hello")
-def hello_ssti():
-	# fileupload_vulnerability
-    if request.args.get('name'):
-        name = request.args.get('name')
-        template = f'''<div>
-        <h1>Hello</h1>
-        {name}
-</div>
+@app.route("/get_users")
+def get_users():
+    try:
+        hostname = request.args.get('hostname')
+        command = "dig " + hostname
+        data = subprocess.check_output(command, shell=True)
+        return data
+    except:
+        data = str(hostname) + " username didn't found"
+        return data
