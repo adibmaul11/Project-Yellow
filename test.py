@@ -1,4 +1,4 @@
-app.route("/hello")
+@app.route("/hello")
 def hello_ssti():
 	# fileupload_vulnerability
     if request.args.get('name'):
